@@ -30,4 +30,29 @@ public class BirdActivity extends AppCompatActivity {
         birdView.setImageDrawable(image);
     }
 
+    @Override
+    protected void onStop(){
+        ImageView birdView = (ImageView)findViewById(R.id.imgBird);
+        birdView.setImageDrawable(null);
+    }
+
+    protected void onStart(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bird);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        findViewById(R.id.btnBirdNext).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BirdActivity.this, BlankBirdActivity.class));
+            }
+        });
+
+        /* Set up image */
+        Drawable image = ContextCompat.getDrawable(this, R.drawable.hummingbird); //get the drawable resource
+        ImageView birdView = (ImageView)findViewById(R.id.imgBird);
+        birdView.setImageDrawable(image);
+    }
+
 }
